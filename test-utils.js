@@ -1,9 +1,11 @@
-const { within } = require('@testing-library/dom')
-const { JSDOM } = require('jsdom')
+import { within } from '@testing-library/dom'
+import { JSDOM } from 'jsdom'
+import { expect } from 'vite'
+import matchers from '@testing-library/jest-dom'
 
-const render = (response) => {
+expect.extend(matchers)
+
+export function render(response) {
   const { document } = new JSDOM(response.text).window
   return within(document)
 }
-
-module.exports = { render }
