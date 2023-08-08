@@ -15,5 +15,4 @@ router.get('/:id', async (req, res) => {
   res.render('single-womble', wombles[0])
 })
 
-
 export default router

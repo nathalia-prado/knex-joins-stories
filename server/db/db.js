@@ -12,3 +12,10 @@ export async function getWombleById(id) {
         .select('wombles.name', 'traits.description')
     return result
 }
+
+export async function getAssignments() {
+    const result = await connection('wombles')
+        .join('rubbish', 'wombles.rubbish_id', 'rubbish.id')
+        .select('wombles.name', 'rubbish.name as rubbish')
+    return result
+}
