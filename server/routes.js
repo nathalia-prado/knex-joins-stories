@@ -8,4 +8,12 @@ router.get('/', async (req, res) => {
   res.render('home', {wombles})
 })
 
+router.get('/:id', async (req, res) => {
+  const wombleId = req.params.id
+  const wombles = await db.getWombleById(wombleId)
+
+  res.render('single-womble', wombles[0])
+})
+
+
 export default router
