@@ -4,6 +4,7 @@ import express from 'express'
 import hbs from 'express-handlebars'
 
 import routes from './routes.js'
+import assignments from './assignments-route.js'
 
 const server = express()
 
@@ -24,6 +25,8 @@ server.use(express.static(publicFolder))
 server.use(express.urlencoded({ extended: true }))
 
 // Routes
+server.use('/assignments', assignments)
 server.use('/', routes)
+
 
 export default server
